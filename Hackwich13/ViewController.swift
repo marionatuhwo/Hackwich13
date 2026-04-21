@@ -11,12 +11,21 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var slider: UISlider!
     var currentValue : Float = 0
+    //var targetValue: Int = 0
+    //this variable holds the target value
+    var targetValue = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         currentValue = slider.value
+        //assign the variable targetValue to a randomly generated integer from 1-100
+       
+        //call the new round function
+        startAgain()
+        
+        
     }
 
 
@@ -24,8 +33,7 @@ class ViewController: UIViewController {
     
     {
         
-        let message = "The value is: \(currentValue)"
-        
+        let message = "The value is : \(currentValue) \n The target value is: \(targetValue)"
         let alert = UIAlertController(title: "Hello World", message: message, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Awesome", style: .default, handler: nil)
@@ -33,6 +41,8 @@ class ViewController: UIViewController {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+        
+        startAgain()
         
     }
     
@@ -43,6 +53,12 @@ class ViewController: UIViewController {
         print("The value of the slider is:\(slider.value)")
         currentValue = slider.value
         
+    }
+    
+    func startAgain()
+    {
+        targetValue = Int.random(in: 1...100)
+        currentValue = slider.value
     }
     
 }
